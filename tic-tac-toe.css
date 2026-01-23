@@ -4,7 +4,7 @@
 }
 
 body {
-    background-color: darkcyan;
+    background-color: beige;
     text-align: center;
 }
 
@@ -29,13 +29,13 @@ body {
 }
 
 .box {
-    height: 18vmin;
-    width: 18vmin;
+    height: 16vmin;
+    width: 16vmin;
     border-radius: 1rem;
     border: none;
     font-size: 8vmin;
-    color: brown;
-    background-color: darkgrey;
+    color: blueviolet;
+    background-color: pink;
 }
 
 #reset-btn {
@@ -45,6 +45,7 @@ body {
     background-color: black;
     color: white;
     font-size: 1.2rem;
+    font-weight: bolder;
 }
 
 h2 {
@@ -57,7 +58,7 @@ h2 {
 }
 
 #msg {
-    color: rgb(186, 226, 43);
+    color: red;
     font-size: 3rem;
     font-weight: bold;
 }
@@ -69,8 +70,62 @@ h2 {
     background-color: black;
     color: white;
     font-size: 1.2rem;
+    font-weight: bolder;
 }
 
 .hide {
     display: none;
+}
+
+@media (max-width:768px) {
+
+    body {
+        background-color: beige;
+    }
+
+    .container {
+        height: 50vh;
+        gap: 1.2vmin;
+    }
+
+    .game {
+        height: 40vmin;
+        width: 50vmin;
+        gap: 1.2vmin;
+    }
+
+    .box {
+        height: 15vmin;
+        width: 15vmin;
+        font-size: 5vmin;
+        color: blue;
+    }
+
+    #reset-btn {
+        padding: 0.8rem;
+        font-size: 12px;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+        /* margin: 10px; */
+    }
+
+    .msg-container {
+        height: 20vmin;
+        padding: 15px;
+    }
+
+    #msg {
+        color: red;
+        font-size: 1.5rem;
+        margin-bottom: 8px;
+    }
+
+    #new-btn {
+        padding: 0.8rem;
+        font-size: 12px;
+    }
+
+
 }
