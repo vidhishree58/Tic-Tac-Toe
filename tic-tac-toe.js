@@ -5,6 +5,8 @@ let msgContainer = document.querySelector(".msg-container");
 let msg = document.querySelector("#msg");
 
 let turnO = true;
+let moveCount = 0;
+let gameOver = false;
 
 const winPatterns = [
     [0, 1, 2],
@@ -17,27 +19,24 @@ const winPatterns = [
     [6, 7, 8],
 ];
 
-
+// RESET GAME
 const resetGame = () => {
     turnO = true;
     moveCount = 0;
-    enableBoxes();
+    gameOver = false;
     msgContainer.classList.add("hide");
-}
 
-const checkDraw = () => {
-    if (moveCount === 9) {
-        msg.innerText = "Game Draw 🤝";
-        msgContainer.classList.remove("hide");
-        disableBoxes();
+    for (let box of boxes) {
+        box.innerText = "";
+        box.disabled = false;
     }
 };
 
-let moveCount = 0;
-
-
+// BOX CLICK
 boxes.forEach((box) => {
     box.addEventListener("click", () => {
+        if (gameOver) return;
+
         if (turnO) {
             box.innerText = "O";
             turnO = false;
@@ -45,6 +44,7 @@ boxes.forEach((box) => {
             box.innerText = "X";
             turnO = true;
         }
+
         box.disabled = true;
         moveCount++;
 
@@ -53,40 +53,44 @@ boxes.forEach((box) => {
     });
 });
 
+// CHECK WINNER
+const checkWinner = () => {
+    for (let pattern of winPatterns) {
+        let pos1 = boxes[pattern[0]].innerText;
+        let pos2 = boxes[pattern[1]].innerText;
+        let pos3 = boxes[pattern[2]].innerText;
 
-const enableBoxes = () => {
-    for (let box of boxes) {
-        box.disabled = false;
-        box.innerText = ""
+        if (pos1 !== "" && pos1 === pos2 && pos2 === pos3) {
+            showWinner(pos1);
+            return;
+        }
     }
 };
 
-const disableBoxes = () => {
+// SHOW WINNER
+const showWinner = (winner) => {
+    msg.innerText = `Winner is ${winner} 🎉`;
+    msgContainer.classList.remove("hide");
+    gameOver = true;
+
     for (let box of boxes) {
         box.disabled = true;
     }
 };
 
-const showWinner = (winner) => {
-    msg.innerText = `Winner is ${winner} !!`;
-    msgContainer.classList.remove("hide");
-    disableBoxes();
-};
+// CHECK DRAW
+const checkDraw = () => {
+    if (moveCount === 9 && !gameOver) {
+        msg.innerText = "Game Draw 🤝";
+        msgContainer.classList.remove("hide");
+        gameOver = true;
 
-const checkWinner = () => {
-    for (let pattern of winPatterns) {
-
-        let pos1Val = boxes[pattern[0]].innerText;
-        let pos2Val = boxes[pattern[1]].innerText;
-        let pos3Val = boxes[pattern[2]].innerText;
-
-        if (pos1Val != "" && pos2Val != "" && pos3Val != "") {
-            if (pos1Val === pos2Val && pos2Val === pos3Val) {
-                showWinner(pos1Val);
-            }
+        for (let box of boxes) {
+            box.disabled = true;
         }
     }
 };
 
+// BUTTON EVENTS
 newGameBtn.addEventListener("click", resetGame);
 resetbtn.addEventListener("click", resetGame);
