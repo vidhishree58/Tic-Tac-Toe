@@ -39,9 +39,11 @@ boxes.forEach((box) => {
 
         if (turnO) {
             box.innerText = "O";
+            box.style.color = "navy";
             turnO = false;
         } else {
             box.innerText = "X";
+            box.style.color = "maroon";
             turnO = true;
         }
 
