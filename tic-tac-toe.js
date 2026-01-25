@@ -25,6 +25,7 @@ const resetGame = () => {
     moveCount = 0;
     gameOver = false;
     msgContainer.classList.add("hide");
+    resetbtn.classList.remove("hide");
 
     for (let box of boxes) {
         box.innerText = "";
@@ -74,6 +75,7 @@ const showWinner = (winner) => {
     msg.innerText = `Winner is ${winner} 🎉`;
     msgContainer.classList.remove("hide");
     gameOver = true;
+    resetbtn.classList.add("hide");
 
     for (let box of boxes) {
         box.disabled = true;
@@ -86,6 +88,7 @@ const checkDraw = () => {
         msg.innerText = "Game Draw 🤝";
         msgContainer.classList.remove("hide");
         gameOver = true;
+        resetbtn.classList.add("hide");
 
         for (let box of boxes) {
             box.disabled = true;
