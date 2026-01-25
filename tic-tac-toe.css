@@ -79,10 +79,6 @@ h2 {
 
 @media (max-width:768px) {
 
-    body {
-        background-color: beige;
-    }
-
     .container {
         height: 50vh;
         gap: 1.2vmin;
