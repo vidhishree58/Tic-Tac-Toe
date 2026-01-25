@@ -97,8 +97,8 @@ h2 {
     .box {
         height: 15vmin;
         width: 15vmin;
-        font-size: 5vmin;
-        color: blue;
+        font-size: 6vmin;
+        color: blueviolet;
     }
 
     #reset-btn {
@@ -108,7 +108,6 @@ h2 {
 
     h2 {
         font-size: 1.4rem;
-        /* margin: 10px; */
     }
 
     .msg-container {
@@ -126,6 +125,4 @@ h2 {
         padding: 0.8rem;
         font-size: 12px;
     }
-
-
 }
